@@ -10,22 +10,22 @@
   <script type="module">
     const rootElement = document.getElementById('root')
 
-    // You're going to re-implement this code using React!
-    // 💣 So go ahead and delete this implementation (or comment it out for now)
-    // These three lines are similar to React.createElement
-    const element = document.createElement('div')
-    element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
-    element.className = 'container' // 💰 in React, this is also called the "className" prop
-    // This is similar to ReactDOM.render
-    rootElement.append(element)
+    // const reactElement = React.createElement('div', {
+    //   id: 'element-id',
+    //   children: 'Hello world',
+    //   className: 'container',
+    // })
+    // ReactDOM.render(reactElement, rootElement)
 
-    // 🐨 Please re-implement the regular document.createElement code above
-    // with these React API calls
-    // 💰 The example in the markdown file should be a good hint for you.
+    const hello = React.createElement('span', {}, 'Hello')
 
-    const elementProps = {id: 'element-id', children: 'Hello world!'}
-    const elementType = 'h1'
-    const reactElement = React.createElement(elementType, elementProps)
-    ReactDOM.render(reactElement, rootElement)
+    const world = React.createElement('span', {}, 'World')
+
+    const div = React.createElement('div', {
+      className: 'container',
+      children: [hello, ' ', world],
+    })
+
+    ReactDOM.render(div, rootElement)
   </script>
 </body>
