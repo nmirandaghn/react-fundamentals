@@ -11,11 +11,76 @@
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+    // const element = (
+    //   <div className="container">
+    //     <div className="message">Hello World</div>
+    //     <div className="message">Goodbye World</div>
+    //   </div>
+    // )
+
+    // // Solution
+    // function message({children}) {
+    //   return <div className="message">{children}</div>
+    // }
+
+    // const element = (
+    //   <div className="container">
+    //     {message({children: 'Hello World'})}{' '}
+    //     {message({children: 'Goodbye World'})}
+    //   </div>
+    // )
+
+    // Extra credit 1
+    // const element = (
+    //   <div className="container">
+    //     {React.createElement(message, {children: 'Hello World'})}
+    //     {React.createElement(message, {
+    //       children: 'Goodbye World',
+    //     })}
+    //   </div>
+    // )
+
+    // Extra credit 2
+    // const Message = ({children}) => {
+    //   return <div className="message">{children}</div>
+    // }
+
+    // const element = (
+    //   <div className="container">
+    //     <Message>Hello World</Message>
+    //     <Message>Goodbye World</Message>
+    //   </div>
+    // )
+
+    const PropTypes = {
+      string(props, propName, componentName) {
+        const type = typeof props[propName]
+        if (type !== 'string') {
+          return new Error(
+            `Hey, the ${componentName} neeeds the prop ${propName} to be of type string and not ${type}`,
+          )
+        }
+      },
+    }
+
+    function Message({subject, greetings}) {
+      return (
+        <div className="message">
+          {subject}, {greetings}
+        </div>
+      )
+    }
+
+    Message.propTypes = {
+      subject: PropTypes.string,
+      greetings: PropTypes.string,
+    }
+
     const element = (
-      <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
-      </div>
+      <React.Fragment>
+        <Message subject={9} greetings="Hello" />
+        <Message subject="Mauricio" greetings={4} />
+      </React.Fragment>
     )
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
